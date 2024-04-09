@@ -1,0 +1,49 @@
+
+.pics{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+}
+.pic-wrapper video{
+    object-fit: cover;
+    position: fixed;
+}
+.dots{
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+    position: fixed;
+    top: 90%;
+    bottom: 0;
+    left: 45%;
+}
+.texts{
+    z-index: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.56);
+   
+}
+.text-1{
+    font-size: 100px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+}
+.text-2{
+    font-size: 40px;
+    font-weight: 900;
+    color: yellow;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+.footer{
+    position: fixed;
+    top:95%;
+    z-index: 1;
+    background-color: black;
+    width: 100%;
+    padding: 10px;
+}
