@@ -1,6 +1,9 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Taycan() {
+    const navigate=useNavigate();
+
     const Data=[
         {
             name:"Taycan",
@@ -23,6 +26,8 @@ function Taycan() {
     <div>
         <div className='bg-dark text-light'>
                 <div className='container'>
+                <button className='btn btn-outline-light back-btn' onClick={()=>navigate('/models')}>All Models</button>
+
                     <div className='text-center p-5'>
                         <div className='fw-bold fs-3 text-primary'>Porsche Car Configurator</div>
                         <div className='fw-bold fs-4'>Panamera Models</div>

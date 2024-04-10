@@ -1,54 +1,78 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+import bg from '../Assets/porsche-normal-bg.webp'
 
 function Machan() {
-    const Data=[
-        {
-            name:'Macan Turbo Electric',
-            price:'from INR 16,505,000',
-            img:'https://files.porsche.com/filestore/image/multimedia/none/macan-bev-turbo-modelimage/thumbwhite/51395e05-aacb-11ee-8112-005056bbdc38;sK;twebp/porsche-thumbwhite.webp'
-        },
+    let [count, setCount] = useState(0)
+    const navigate=useNavigate();
+    const data=[
+        
         {
             name:'Macan',
             price:'from INR 8,806,000',
-            img:'https://files.porsche.com/filestore/image/multimedia/none/pa3-r4-modelimage-sideshot/thumbwhite/4833315f-de41-11eb-80d9-005056bbdc38;sK;twebp/porsche-thumbwhite.webp'
+            acceleration: "256",
+            speed: "5.4",
+            power: "265 kW/355 PS",
+            img:"https://files.porsche.com/filestore/image/multimedia/none/pa3-r4-modelexplorer/normal/237e6fa9-7dec-11ec-80e9-005056bbdc38;sP;twebp/porsche-normal.webp"
         },
         {
             name:'Macan S',
             price:'from INR 14,352,000',
-            img:'https://files.porsche.com/filestore/image/multimedia/none/pa3-s-modelimage-sideshot/thumbwhite/c44c3e83-c173-11ec-80ef-005056bbdc38;sK;twebp/porsche-thumbwhite.webp'
+            acceleration: "293",
+            speed: "4.2",
+            power: "283 kW/385 PS",
+            img:"https://files.porsche.com/filestore/image/multimedia/none/pa3-gts-modelexplorer/normal/19df7d06-7dec-11ec-80e9-005056bbdc38;sP;twebp/porsche-normal.webp"
         },
         {
             name:'Macan GTS',
             price:'from INR 15,347,000',
-            img:'https://files.porsche.com/filestore/image/multimedia/none/pa3-gts-modelimage-sideshot/thumbwhite/53c319ab-de44-11eb-80d9-005056bbdc38;sK;twebp/porsche-thumbwhite.webp'
+            acceleration: "256",
+            speed: "5.4",
+            power: "265 kW/355 PS",
+            img:"https://files.porsche.com/filestore/image/multimedia/none/pa3-gts-modelexplorer/normal/19df7d06-7dec-11ec-80e9-005056bbdc38;sP;twebp/porsche-normal.webp"
         },
     ]
   return (
-    <div>
-        <div className='bg-dark text-light'>
-            <div className='container'>
-                <div className='text-center p-5'>
-                    <div className='fw-bold fs-3 text-primary'>Porsche Car Configurator</div>
-                    <div className='fw-bold fs-4'>Macan Models</div>
+    <div className=''>
+            <img src={bg} height={'100%'} width={'100%'} className='preview-911' />
+            <div className='preview-overlay'>
+                <button className='btn btn-outline-light back-btn' onClick={()=>navigate('/models')}>All Models</button>
+                <div className='text-center'>
+                    <div className='fw-bolder fs-1 text-warning'>{data[count].name}</div>
+                    <div className='fw-bolder  text-light'>{data[count].price}</div>
+                    <img src={data[count].img} />
                 </div>
 
-                <div className='row mt-5'>
-                    {
-                        Data.map((item) => {
-                            return <div className='col-4 mb-4'>
-                                <div className='model911'>
-                                    <img src={item.img} className='rounded' />
-                                    <div className='fw-bold mt-3 fs-5 text-warning'>{item.name}</div>
-                                    <div className='text-info'>{item.price}</div>
-                                </div>
-                            </div>
-                        })
-                    }
-
+                <div>
+                    <div className='row text-light text-center'>
+                        <div className='col border p-3 mx-3'>
+                            <div className='fw-bold fs-3  text-warning'>{data[count].power}</div>
+                            <div className='fw-bold'>Power (kW)/Power (PS)</div>
+                        </div>
+                        <div className='col border p-3 mx-3'>
+                            <div className='fw-bold fs-3  text-warning'>{data[count].speed}s</div>
+                            <div className='fw-bold'>Acceleration 0 - 100 km/h</div>
+                        </div>
+                        <div className='col border p-3 mx-3'>
+                            <div className='fw-bold fs-3 text-warning'>{data[count].acceleration}Km/hr</div>
+                            <div className='fw-bold'>Top Speed</div>
+                        </div>
+                    </div>
                 </div>
+
+                
+
+            </div>
+
+            <div className=''>
+                {
+                    count === 0 ? "" : <button className='btn btn-outline-warning preview-controls-left' onClick={() => setCount(--count)}><i className='fa fa-angle-left'></i></button>
+                }
+                {
+                    count === data.length-1 ? "" : <button className='btn btn-outline-warning preview-controls-right' onClick={() => setCount(++count)}><i className='fa fa-angle-right'></i></button>
+                }
             </div>
         </div>
-    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import bg from '../Assets/porsche-normal-bg.webp'
+import {useNavigate} from 'react-router-dom'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -93,11 +94,12 @@ function Model911() {
         },
     ]
 
-    
+    const navigate=useNavigate();
     return (
         <div className=''>
             <img src={bg} height={'100%'} width={'100%'} className='preview-911' />
             <div className='preview-overlay'>
+                <button className='btn btn-outline-light back-btn' onClick={()=>navigate('/models')}>All Models</button>
                 <div className='text-center'>
                     <div className='fw-bolder fs-1 text-warning'>{data[count].name}</div>
                     <div className='fw-bolder  text-light'>{data[count].price}</div>
